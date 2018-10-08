@@ -27,6 +27,13 @@ them: if you use a plugin that supports this feature, and you have the new
 
 This drastically simplifies both the plugins that wish to implement this, and the user sketches, which no longer need to explicitly register the focus hooks.
 
+### Events now trigger on layer changes
+
+Changing layers now triggers the `onLayerChange` event - but only if there was
+real change (thus, calling `Layer.on(SOME_LAYER)` multiple times in a row will
+only trigger one event). This event was introduced to help plugins that depend
+on layer state schedule their work better.
+
 ### Kaleidoscope.millisAtCycleStart()
 
 Many plugins use timers, and most of them will call `millis()`, which isn't
