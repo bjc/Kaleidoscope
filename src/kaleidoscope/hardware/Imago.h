@@ -133,7 +133,22 @@ class Imago {
   static void debounceRow(uint16_t change, uint8_t row);
 };
 
+#define KEYMAP(                                                                                  \
+	 R0C0, R0C1, R0C2, R0C3, R0C4, R0C5, R0C6, R0C7, R0C8, R0C9, R0C10, R0C11, R0C12, R0C13, R0C14, R0C15,  \
+	 R1C0, R1C1,       R1C3, R1C4, R1C5, R1C6, R1C7, R1C8, R1C9, R1C10, R1C11, R1C12, R1C13, R1C14, R1C15,  \
+	 R2C0, R2C1, R2C2, R2C3, R2C4, R2C5, R2C6,       R2C8, R2C9, R2C10, R2C11, R2C12, R2C13, R2C14,         \
+	 R3C0, R3C1, R3C2, R3C3, R3C4, R3C5, R3C6, R3C7,       R3C9, R3C10, R3C11, R3C12, R3C13,        R3C15,  \
+	 R4C0, R4C1, R4C2, R4C3,       R4C5, R4C6, R4C7, R4C8, R4C9, R4C10, R4C11, R4C12, R4C13,        R4C15   \
+  ) {                                                                                              \
+	{ R0C0, R0C1, R0C2, R0C3, R0C4, R0C5, R0C6, R0C7, R0C8, R0C9, R0C10, R0C11, R0C12, R0C13, R0C14, R0C15 },  \
+	{ R1C0, R1C1, XXX,  R1C3, R1C4, R1C5, R1C6, R1C7, R1C8, R1C9, R1C10, R1C11, R1C12, R1C13, R1C14, R1C15 },  \
+	{ R2C0, R2C1, R2C2, R2C3, R2C4, R2C5, R2C6, XXX,  R2C8, R2C9, R2C10, R2C11, R2C12, R2C13, R2C14,  XXX },  \
+	{ R3C0, R3C1, R3C2, R3C3, R3C4, R3C5, R3C6, R3C7, XXX,  R3C9, R3C10, R3C11, R3C12, R3C13, XXX,   R3C15 },  \
+	{ R4C0, R4C1, R4C2, R4C3, XXX,  R4C5, R4C6, R4C7, R4C8, R4C9, R4C10, R4C11, R4C12, R4C13, XXX,   R4C15 }   \
+  }
 
+}
+}
 
 /* To be used by the hardware implementations, `keyIndex` tells us the index of
  * a key, from which we can figure out the row and column as needed. The index
@@ -251,19 +266,6 @@ constexpr uint8_t R5C13 = keyIndex(5, 13);
 constexpr uint8_t R5C14 = keyIndex(5, 14);
 constexpr uint8_t R5C15 = keyIndex(5, 15);
 
-#define KEYMAP(                                                                                  \
-	 R0C0, R0C1, R0C2, R0C3, R0C4, R0C5, R0C6, R0C7, R0C8, R0C9, R0C10, R0C11, R0C12, R0C13, R0C14, R0C15,  \
-	 R1C0, R1C1,       R1C3, R1C4, R1C5, R1C6, R1C7, R1C8, R1C9, R1C10, R1C11, R1C12, R1C13, R1C14, R1C15,  \
-	 R2C0, R2C1, R2C2, R2C3, R2C4, R2C5, R2C6,       R2C8, R2C9, R2C10, R2C11, R2C12, R2C13, R2C14,         \
-	 R3C0, R3C1, R3C2, R3C3, R3C4, R3C5, R3C6, R3C7,       R3C9, R3C10, R3C11, R3C12, R3C13,        R3C15,  \
-	 R4C0, R4C1, R4C2, R4C3,       R4C5, R4C6, R4C7, R4C8, R4C9, R4C10, R4C11, R4C12, R4C13,        R4C15   \
-  ) {                                                                                              \
-	{ R0C0, R0C1, R0C2, R0C3, R0C4, R0C5, R0C6, R0C7, R0C8, R0C9, R0C10, R0C11, R0C12, R0C13, R0C14, R0C15 },  \
-	{ R1C0, R1C1,       R1C3, R1C4, R1C5, R1C6, R1C7, R1C8, R1C9, R1C10, R1C11, R1C12, R1C13, R1C14, R1C15 },  \
-	{ R2C0, R2C1, R2C2, R2C3, R2C4, R2C5, R2C6,       R2C8, R2C9, R2C10, R2C11, R2C12, R2C13, R2C14        },  \
-	{ R3C0, R3C1, R3C2, R3C3, R3C4, R3C5, R3C6, R3C7,       R3C9, R3C10, R3C11, R3C12, R3C13,        R3C15 },  \
-	{ R4C0, R4C1, R4C2, R4C3,       R4C5, R4C6, R4C7, R4C8, R4C9, R4C10, R4C11, R4C12, R4C13,        R4C15 }   \
-  }
 
 extern kaleidoscope::hardware::Imago &Imago;
 
